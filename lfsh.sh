@@ -46,7 +46,7 @@ install() {
         _install "$i"
         local end=$(date +%s)
         local build_time=$(($end - $start))
-        total=$total+$build_time
+        total=$(($total+$build_time))
     done
 
     for i in $@; do
