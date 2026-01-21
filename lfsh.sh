@@ -106,5 +106,16 @@ chroot() {
         /bin/bash --login
 }
 
+chown() {
+    if [ -z "$LFS" ]; then
+        exit 1
+    fi
+
+    command chown -R root:root $LFS/{usr,var,etc,tools}
+    case $(uname -m) in
+        x86_64) command chown -R root:root $LFS/lib64 ;;
+    esac
+}
+
 func=$1; shift; $func "$@"
 
